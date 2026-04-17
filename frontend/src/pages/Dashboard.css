@@ -1,4 +1,4 @@
-.dashboard-layout {
+﻿.dashboard-layout {
   display: flex;
   min-height: 100vh;
 }
@@ -30,6 +30,15 @@
   color: #333;
   font-size: 28px;
   margin: 0;
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
 }
 
 .language-selector {
@@ -99,35 +108,24 @@
   color: #388e3c;
 }
 
-.card-content {
-  flex: 1;
-}
-
-.card-label {
-  color: #666;
-  font-size: 14px;
-  margin: 0 0 10px 0;
-  font-weight: 500;
-}
-
-.card-value {
+.card-content h3 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
   color: #333;
-  font-size: 28px;
-  margin: 0;
-  font-weight: 700;
 }
 
-.refresh-section {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
+.card-content p {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #666;
 }
 
 .refresh-btn {
-  padding: 12px 30px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
+  padding: 12px 30px;
   border-radius: 6px;
   font-size: 16px;
   font-weight: 600;
@@ -146,22 +144,41 @@
 }
 
 @media (max-width: 768px) {
+  .mobile-toggle {
+    display: block;
+  }
+
   .main-content {
-    margin-left: 60px;
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .sidebar.collapsed ~ .main-content,
+  .sidebar.open ~ .main-content {
+    margin-left: 0;
+  }
+
+  .top-bar {
     padding: 15px;
+  }
+
+  .top-bar h1 {
+    font-size: 24px;
   }
 
   .dashboard-grid {
     grid-template-columns: 1fr;
-  }
-
-  .top-bar {
-    flex-direction: column;
     gap: 15px;
-    align-items: flex-start;
   }
 
-  .top-bar h1 {
-    font-size: 22px;
+  .card {
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .card-icon {
+    font-size: 36px;
+    width: 60px;
+    height: 60px;
   }
 }

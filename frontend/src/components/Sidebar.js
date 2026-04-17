@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Sidebar.css';
 
-const Sidebar = ({ language }) => {
+const Sidebar = ({ language, isOpen = true, onToggle = () => {} }) => {
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(true);
 
   const translations = {
     en: {
@@ -40,9 +39,15 @@ const Sidebar = ({ language }) => {
     navigate('/login');
   };
 
+  const handleToggle = () => {
+    if (typeof onToggle === 'function') {
+      onToggle(!isOpen);
+    }
+  };
+
   return (
     <div className={`sidebar ${isOpen ? 'open' : 'collapsed'}`}>
-      <button className="toggle-btn" onClick={() => setIsOpen(!isOpen)}>
+      <button className="toggle-btn" onClick={handleToggle}>
         ☰
       </button>
       <div className="sidebar-content">

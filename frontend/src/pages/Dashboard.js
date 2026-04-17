@@ -12,6 +12,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [language, setLanguage] = useState('en');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const translations = {
     en: {
@@ -52,13 +53,25 @@ const Dashboard = () => {
   const fetchDashboardData = async () => {
     setLoading(true);
     setError('');
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setError('Authentication token is missing. Please log in again.');
+      setLoading(false);
+      return;
+    }
+
     try {
-      const token = localStorage.getItem('token');
       const response = await axios.get('http://localhost:5000/api/dashboard/stats', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setDashboardData(response.data.stats || response.data);
     } catch (err) {
+      if (err.response?.status === 401) {
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+        return;
+      }
       setError(err.response?.data?.message || 'Failed to load dashboard data');
       console.error('Dashboard error:', err);
     } finally {
@@ -72,10 +85,9 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-layout">
-      <Sidebar language={language} />
+      <Sidebar language={language} isOpen={isSidebarOpen} onToggle={setIsSidebarOpen} />
       <div className="main-content">
-        <div className="top-bar">
-          <h1>{t.dashboard}</h1>
+        <div className="top-bar">          <button className="mobile-toggle" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>☰</button>          <h1>{t.dashboard}</h1>
           <select value={language} onChange={handleLanguageChange} className="language-selector">
             <option value="en">English</option>
             <option value="te">Telugu</option>
