@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Sidebar from '../components/Sidebar';
+import API_URL from '../utils/apiConfig';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -62,7 +63,7 @@ const Dashboard = () => {
     }
 
     try {
-      const response = await axios.get('http://localhost:5000/api/dashboard/stats', {
+      const response = await axios.get(`${API_URL}/api/dashboard/stats`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setDashboardData(response.data.stats || response.data);

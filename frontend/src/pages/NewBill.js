@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Sidebar from '../components/Sidebar';
+import API_URL from '../utils/apiConfig';
 import './NewBill.css';
 
 const NewBill = () => {
@@ -133,7 +134,7 @@ const NewBill = () => {
   const fetchCustomers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/accounts/customers', {
+      const response = await axios.get(`${API_URL}/api/accounts/customers`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCustomers(response.data.accounts || []);
@@ -145,7 +146,7 @@ const NewBill = () => {
   const fetchBills = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/bills', {
+      const response = await axios.get(`${API_URL}/api/bills`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBills(response.data.bills || []);
@@ -457,7 +458,7 @@ const NewBill = () => {
       console.log('Sending bill data:', billData);
       console.log('Token:', token);
 
-      await axios.post('http://localhost:5000/api/bills', billData, {
+      await axios.post(`${API_URL}/api/bills`, billData, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

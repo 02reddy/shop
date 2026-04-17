@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Sidebar from '../components/Sidebar';
+import API_URL from '../utils/apiConfig';
 import './Pages.css';
 
 const Settings = ({ setIsAuthenticated }) => {
@@ -39,7 +40,7 @@ const Settings = ({ setIsAuthenticated }) => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/auth/change-password', {
+      await axios.post(`${API_URL}/api/auth/change-password`, {
         currentPassword,
         newPassword,
         confirmPassword

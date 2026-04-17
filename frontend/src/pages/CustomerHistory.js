@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Sidebar from '../components/Sidebar';
+import API_URL from '../utils/apiConfig';
 import './Pages.css';
 
 const CustomerHistory = () => {
@@ -80,7 +81,7 @@ const CustomerHistory = () => {
   const fetchCustomers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/accounts/customers', {
+      const response = await axios.get(`${API_URL}/api/accounts/customers`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCustomers(response.data.accounts || []);
@@ -105,7 +106,7 @@ const CustomerHistory = () => {
 
     for (let customer of matchedCustomers) {
       const response = await axios.get(
-        `http://localhost:5000/api/bills/customer/${customer._id}`,
+        `${API_URL}/api/bills/customer/${customer._id}`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
@@ -151,7 +152,7 @@ const CustomerHistory = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.get(
-        `http://localhost:5000/api/bills/customer/${customer._id}`,
+        `${API_URL}/api/bills/customer/${customer._id}`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
@@ -197,7 +198,7 @@ const CustomerHistory = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/bills/${billId}`, {
+      await axios.delete(`${API_URL}/api/bills/${billId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (selectedCustomer) {

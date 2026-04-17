@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Sidebar from '../components/Sidebar';
+import API_URL from '../utils/apiConfig';
 import { useParams, useNavigate } from 'react-router-dom';
 import './Pages.css';
 
@@ -26,7 +27,7 @@ const EditBill = () => {
   const fetchBill = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:5000/api/bills/${id}`, {
+      const response = await axios.get(`${API_URL}/api/bills/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBill(response.data.bill || response.data);
@@ -41,7 +42,7 @@ const EditBill = () => {
     if (window.confirm('Are you sure?')) {
       try {
         const token = localStorage.getItem('token');
-        await axios.delete(`http://localhost:5000/api/bills/${id}`, {
+        await axios.delete(`${API_URL}/api/bills/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         navigate('/customer-history');
