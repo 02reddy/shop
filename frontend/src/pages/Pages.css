@@ -1,0 +1,180 @@
+.page-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bills-table-container {
+  margin-top: 30px;
+}
+
+.bills-table-container h2 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.bills-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.bills-table thead {
+  background: #667eea;
+  color: white;
+}
+
+.bills-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.bills-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.bills-table tbody tr:hover {
+  background: #f9f9f9;
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status.open {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.status.paid {
+  background: #e8f5e9;
+  color: #388e3c;
+}
+
+.no-data {
+  text-align: center;
+  color: #999;
+  padding: 30px;
+  font-size: 16px;
+}
+
+.settings-form {
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+.close-account-details {
+  margin-top: 20px;
+}
+
+.delete-btn {
+  background: #ff4757;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.delete-btn:hover {
+  background: #ff3838;
+}
+
+@media (max-width: 768px) {
+  .bills-table {
+    font-size: 12px;
+  }
+
+  .bills-table th,
+  .bills-table td {
+    padding: 10px 5px;
+  }
+
+  .page-card {
+    padding: 15px;
+  }
+}
+
+/* Table Button Styles */
+.table-button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 2px;
+  transition: all 0.2s ease;
+}
+
+.table-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.table-button:active {
+  transform: translateY(0);
+}
+
+/* Edit button - Blue */
+.table-button.edit,
+.table-button:first-child {
+  background: #2196F3;
+  color: white;
+}
+
+.table-button.edit:hover,
+.table-button:first-child:hover {
+  background: #1976D2;
+}
+
+/* Delete button - Red */
+.table-button.secondary {
+  background: #F44336;
+  color: white;
+}
+
+.table-button.secondary:hover {
+  background: #D32F2F;
+}
+
+/* Download button - Green */
+.table-button.download {
+  background: #4CAF50;
+  color: white;
+}
+
+.table-button.download:hover {
+  background: #388E3C;
+}
+
+/* Save button - Blue */
+.table-button.save {
+  background: #2196F3;
+  color: white;
+}
+
+.table-button.save:hover {
+  background: #1976D2;
+}
+
+/* Cancel button - Gray */
+.table-button.cancel {
+  background: #9E9E9E;
+  color: white;
+}
+
+.table-button.cancel:hover {
+  background: #757575;
+}

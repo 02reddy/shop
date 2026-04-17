@@ -1,0 +1,40 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 24px;
+  color: #333;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+input, textarea, select {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
